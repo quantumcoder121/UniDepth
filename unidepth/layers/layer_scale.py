@@ -6,7 +6,7 @@ class LayerScale(nn.Module):
     def __init__(
         self,
         dim: int,
-        init_values: float | torch.Tensor = 1e-5,
+        init_values,
         inplace: bool = False,
     ) -> None:
         super().__init__()
