@@ -1471,7 +1471,7 @@ class SphHarm(torch.nn.Module):
         harmonics = harmonics.permute(1, 0).reshape(B, N, -1).to(dtype)
         return harmonics
 
-    def _gen_recurrence_mask(self) -> tuple[torch.Tensor, torch.Tensor]:
+    def _gen_recurrence_mask(self):
         """Generates mask for recurrence relation on the remaining entries.
 
         The remaining entries are with respect to the diagonal and offdiagonal
