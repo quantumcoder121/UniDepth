@@ -163,7 +163,7 @@ def sync_tensor_across_gpus(t, dim=0, cat=True):
 import pickle
 
 
-def sync_string_across_gpus(keys: list[str], device, dim=0):
+def sync_string_across_gpus(keys, device, dim=0):
     keys_serialized = pickle.dumps(keys, protocol=pickle.HIGHEST_PROTOCOL)
     keys_serialized_tensor = torch.frombuffer(keys_serialized, dtype=torch.uint8).to(
         device
