@@ -21,7 +21,7 @@ class SimpleAttention(nn.Module):
         num_heads: int = 4,
         dropout: float = 0.0,
         cosine: bool = False,
-        context_dim: int | None = None,
+        context_dim = None,
     ):
         super().__init__()
         self.dropout = dropout
@@ -39,11 +39,11 @@ class SimpleAttention(nn.Module):
     def forward(
         self,
         x: torch.Tensor,
-        attn_bias: torch.Tensor | None = None,
-        context: torch.Tensor | None = None,
-        pos_embed: torch.Tensor | None = None,
-        pos_embed_context: torch.Tensor | None = None,
-        rope: nn.Module | None = None,
+        attn_bias = None,
+        context = None,
+        pos_embed = None,
+        pos_embed_context = None,
+        rope = None,
     ) -> torch.Tensor:
         context = x if context is None else context
         x = self.norm_attnx(x)
@@ -88,7 +88,7 @@ class AttentionBlock(nn.Module):
         cosine: bool = False,
         gated: bool = False,
         layer_scale: float = 1.0,
-        context_dim: int | None = None,
+        context_dim = None,
     ):
         super().__init__()
         self.dropout = dropout
@@ -108,11 +108,11 @@ class AttentionBlock(nn.Module):
     def attn(
         self,
         x: torch.Tensor,
-        attn_bias: torch.Tensor | None = None,
-        context: torch.Tensor | None = None,
-        pos_embed: torch.Tensor | None = None,
-        pos_embed_context: torch.Tensor | None = None,
-        rope: nn.Module | None = None,
+        attn_bias = None,
+        context = None,
+        pos_embed = None,
+        pos_embed_context = None,
+        rope = None,
     ) -> torch.Tensor:
         x = self.norm_attnx(x)
         context = self.norm_attnctx(context)
@@ -149,11 +149,11 @@ class AttentionBlock(nn.Module):
     def forward(
         self,
         x: torch.Tensor,
-        attn_bias: torch.Tensor | None = None,
-        context: torch.Tensor | None = None,
-        pos_embed: torch.Tensor | None = None,
-        pos_embed_context: torch.Tensor | None = None,
-        rope: nn.Module | None = None,
+        attn_bias = None,
+        context = None,
+        pos_embed = None,
+        pos_embed_context = None,
+        rope = None,
     ) -> torch.Tensor:
         context = x if context is None else context
         x = (
@@ -183,7 +183,7 @@ class AttentionDecoderBlock(nn.Module):
         cosine: bool = False,
         gated: bool = False,
         layer_scale: float = 1.0,
-        context_dim: int | None = None,
+        context_dim = None,
         single_head_ca: bool = True,
     ):
         super().__init__()
@@ -210,11 +210,11 @@ class AttentionDecoderBlock(nn.Module):
     def cross_attn(
         self,
         x: torch.Tensor,
-        attn_bias: torch.Tensor | None = None,
-        context: torch.Tensor | None = None,
-        pos_embed: torch.Tensor | None = None,
-        pos_embed_context: torch.Tensor | None = None,
-        rope: nn.Module | None = None,
+        attn_bias = None,
+        context = None,
+        pos_embed = None,
+        pos_embed_context = None,
+        rope = None,
     ) -> torch.Tensor:
         num_heads = 1 if self.single_head_ca else self.num_heads
         x = self.norm_x_ca(x)
@@ -249,9 +249,9 @@ class AttentionDecoderBlock(nn.Module):
     def self_attn(
         self,
         x: torch.Tensor,
-        attn_bias: torch.Tensor | None = None,
-        pos_embed: torch.Tensor | None = None,
-        rope: nn.Module | None = None,
+        attn_bias = None,
+        pos_embed = None,
+        rope = None,
     ) -> torch.Tensor:
         x = self.norm_x_sa(x)
         k, v = rearrange(
@@ -278,11 +278,11 @@ class AttentionDecoderBlock(nn.Module):
     def forward(
         self,
         x: torch.Tensor,
-        attn_bias: torch.Tensor | None = None,
-        context: torch.Tensor | None = None,
-        pos_embed: torch.Tensor | None = None,
-        pos_embed_context: torch.Tensor | None = None,
-        rope: nn.Module | None = None,
+        attn_bias = None,
+        context = None,
+        pos_embed = None,
+        pos_embed_context = None,
+        rope = None,
     ) -> torch.Tensor:
         context = x if context is None else context
         x = (
