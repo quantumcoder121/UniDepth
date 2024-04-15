@@ -12,7 +12,7 @@ class MLP(nn.Module):
         expansion: int = 4,
         dropout: float = 0.0,
         gated: bool = False,
-        output_dim: = None,
+        output_dim = None,
     ):
         super().__init__()
         if gated:
