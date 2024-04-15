@@ -36,7 +36,7 @@ def colorize(
     return img
 
 
-def image_grid(imgs: list[np.ndarray], rows: int, cols: int) -> np.ndarray:
+def image_grid(imgs, rows: int, cols: int) -> np.ndarray:
     if not len(imgs):
         return None
     assert len(imgs) == rows * cols
