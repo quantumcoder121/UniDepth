@@ -10,7 +10,7 @@ from torch.nn import functional as F
 
 
 def generate_rays(
-    camera_intrinsics: torch.Tensor, image_shape: Tuple[int, int], noisy: bool = False
+    camera_intrinsics: torch.Tensor, image_shape, noisy: bool = False
 ):
     batch_size, device, dtype = (
         camera_intrinsics.shape[0],
