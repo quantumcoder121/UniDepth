@@ -19,7 +19,7 @@ class NystromBlock(AttentionBlock):
         cosine: bool = False,
         gated: bool = False,
         layer_scale: float = 1.0,
-        context_dim: int | None = None,
+        context_dim = None,
     ):
         super().__init__(
             dim=dim,
@@ -38,11 +38,11 @@ class NystromBlock(AttentionBlock):
     def attn(
         self,
         x: torch.Tensor,
-        attn_bias: torch.Tensor | None = None,
-        context: torch.Tensor | None = None,
-        pos_embed: torch.Tensor | None = None,
-        pos_embed_context: torch.Tensor | None = None,
-        rope: nn.Module | None = None,
+        attn_bias = None,
+        context = None,
+        pos_embed = None,
+        pos_embed_context = None,
+        rope = None,
     ) -> torch.Tensor:
         x = self.norm_attnx(x)
         context = self.norm_attnctx(context)
