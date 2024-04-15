@@ -121,7 +121,7 @@ class DepthHead(nn.Module):
         hidden_dim: int,
         num_heads: int = 8,
         expansion: int = 4,
-        depths: int | list[int] = 4,
+        depths = 4,
         camera_dim: int = 256,
         num_resolutions: int = 4,
         dropout: float = 0.0,
